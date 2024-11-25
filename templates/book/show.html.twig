@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+    {% block body %}
+
+<table border="1" height="10">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>title</th>
+            <th>publicationDate</th>
+            <th>published</th>
+            <th>AuthorId</th>
+
+            <th colspan="2">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if liste is empty %}
+            <tr>
+                <td colspan="5">No books found.</td>
+            </tr>
+        {% else %}
+            {% for book in liste %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title | upper }}</td>
+                <td>{{ book.publicationDate |date }}</td>
+                <td>{{ book.published }}</td>
+                <td>{{ book.Author.id }}</td>
+
+                <td>
+                    <a href="{{ path('edit_auteur', {'id': book.id}) }}"> Edit </a>&nbsp &nbsp
+                    <a href="{{ path('delete_book', {'id': book.id}) }}"> Delete </a> 
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

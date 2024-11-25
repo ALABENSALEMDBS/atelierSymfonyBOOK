@@ -1,0 +1,46 @@
+
+{% extends 'base.html.twig' %}
+    {% block body %}
+    
+
+{% set n_b =0 %}
+<table border="1" height="10">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Picture</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Number of Books</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if Authors is empty %}
+            <tr>
+                <td colspan="5">No authors found.</td>
+            </tr>
+        {% else %}
+            {% for author in Authors %}
+            {% set n_b = n_b + author.nb_books %}
+            <tr>
+                <td>{{ author.id }}</td>
+                <td><img src="{{ asset(author.picture) }}" alt="Author Picture" width="100" height="100"></td>
+                <td>{{ author.username | upper }}</td>
+                <td>{{ author.email }}</td>
+                <td>{{ author.nb_books }}</td>
+                <td>
+                        <a href="{{ path('author_details', { id: author.id }  ) }}">Details</a> {# Add link to details page #}
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+
+<h1> le nombre des auteurs: {{n_a}}</h1>
+<p>Total Authors: {{ Authors|length }}</p>
+
+<h1> le nombre total des livres de tous les auteurs :{{n_b}}</h1>
+
+{% endblock %}

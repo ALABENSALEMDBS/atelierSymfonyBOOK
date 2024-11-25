@@ -1,0 +1,12 @@
+{% block title %}Ajouter un nouvel auteur{% endblock %}
+
+{% block body %}
+    <h1>ADD Book</h1>
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+
+
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">Ajouter Book</button>
+    {{ form_end(form) }}
+{% endblock %}
