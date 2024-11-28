@@ -16,6 +16,9 @@ class Event
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Event
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
 
         return $this;
     }
