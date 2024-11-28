@@ -56,7 +56,7 @@ class BookController extends AbstractController
         ]);
     }
 
-
+//azertyuiokhg f ghfxf wdwdswcgdwcwwdgdfgcgfwd
     #[Route('/book/{id}/delete', name: 'delete_book')]
     public function deleteAuteur(int $id, EntityManagerInterface $entityManager): Response
     {
